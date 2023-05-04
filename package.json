@@ -1,0 +1,31 @@
+{
+  "name": "b-web-200-lyn-2-1-epytodo-mael.rabot",
+  "version": "1.0.0",
+  "description": "Build an API to create a TODO app",
+  "main": "index.js",
+  "scripts": {
+    "start": "node src/index.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ASM-Studios/ASM-EpyTODO.git"
+  },
+  "keywords": [
+    "Javascript",
+    "API",
+    "Node"
+  ],
+  "author": "ASM-Studios, Adrien AUDRIAD, Axel CHYPRE, Mael RABOT",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/ASM-Studios/ASM-EpyTODO/issues"
+  },
+  "homepage": "https://github.com/ASM-Studios/ASM-EpyTODO#readme",
+  "dependencies": {
+    "bcryptjs": "^2.4.3",
+    "dotenv": "^16.0.3",
+    "express": "^4.18.2",
+    "jsonwebtoken": "^9.0.0",
+    "mysql2": "^3.2.4"
+  }
+}
