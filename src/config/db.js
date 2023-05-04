@@ -11,8 +11,7 @@ connection.connect(function (err) {
     if (err) {
         console.log(`Error connecting: ${err.stack}`)
         throw new Error()
-    }
-    console.log(`Connected as ${connection.threadId}`)
+    } console.log(`Connected as ${connection.threadId}`)
 })
 
 module.exports = connection;
