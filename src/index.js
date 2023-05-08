@@ -6,7 +6,7 @@ const port = process.env.PORT
 const db = require('./config/db')
 
 const auth = require('./middleware/auth')
-const { userRoute } = require('./routes/user/user')
+const authRouter = require('./routes/auth/auth')
 
 app.use(express.urlencoded({ extended: true }))
 app.use(express.json())
@@ -20,6 +20,10 @@ app.get('/get', (req, res) => {
         res.send(result)
     })
 })
+
+app.use('/', authRouter)
+
+app.use("*", (req, res) => res.status(404).json({ msg: 'Not Found' }));
 
 app.listen(port, () => {
     console.log(`App listening on http://localhost:${port}`)

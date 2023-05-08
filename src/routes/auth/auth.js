@@ -1,11 +1,24 @@
-const express = require('express');
-const bcrypt = require('bcryptjs');
-const router = express.Router();
+const express = require('express')
+const bcrypt = require('bcryptjs')
+const router = express.Router()
+const mailRegex = require('../../config/regex')
 
-const { register, test } = require('./auth.query')
+const { register } = require('./auth.query')
 
-router.post('/register', (res, req) => {
-    test('andre')
+router.post('/register', (req, res) => {
+    let email = req.body.email
+    let password = req.body.password
+    let name = req.body.name
+    let firstname = req.body.firstname
+
+    if (!email || !password || !name || !firstname || !mailRegex.test(email))
+        return res.status(400).json({ msg: 'Bad parameter' });
+    register(res, email, password, name, firstname);
+});
+
+router.post('/login', (req, res) => {
+    let email = req.body.email
+    let password = req.body.password
 })
 
 module.exports = router;
