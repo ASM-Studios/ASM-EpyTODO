@@ -7,11 +7,11 @@ function auth(req, res, next) {
         if (!token) {
             return res.status(401).json({msg: 'No token provided'})
         }
-        jwt.verify(token, process.env.TOKEN_SECRET, (err, user) => {
+        jwt.verify(token, process.env.TOKEN_SECRET, (err, id) => {
             if (err) {
                 return res.status(403).json({msg: 'Invalid token'})
             }
-            req.user = user
+            req.userId = id
             next()
         })
     } catch (error) {
