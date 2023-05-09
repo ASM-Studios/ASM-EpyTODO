@@ -1,6 +1,6 @@
 CREATE DATABASE IF NOT EXISTS epytodo;
 
-USE epytodo;
+use epytodo;
 
 CREATE TABLE IF NOT EXISTS user
 (
@@ -24,4 +24,7 @@ CREATE TABLE IF NOT EXISTS todo
     user_id INT unsigned NOT NULL,
     PRIMARY KEY (id),
     FOREIGN KEY (user_id) REFERENCES user(id) ON DELETE CASCADE
-) AUTO_INCREMENT = 1;
+) AUTO_INCREMENT =1;
+
+DELETE FROM user;
+DELETE FROM todo;

@@ -37,6 +37,12 @@ npm install
 cat epytodo.sql | mysql -u root -p
 ```
 
+*Setup the .env*<br/>
+```
+cp utils/.env.example .env
+```
+> Update the .env file with your information
+
 *Run the project:*
 ```
 npm start
@@ -45,6 +51,11 @@ npm start
 Enjoy !
 
 ---
+
+## Utils
+> Inside the utils/ folder you will find
+> - '.env.example' An example of the .env file
+> - 'epytodoReset.sql' An sql script to reset the database
 
 ---
 ### REPORTING BUGS:
