@@ -21,6 +21,6 @@ exports.register = (res, email, password, name, firstname) => {
     }).catch(() => res.status(500).json({ msg: "Internal server error"}))
 }
 
-exports.login = (res) => {
-    return res.status(200).send('Ok')
+exports.login = (res, email, password) => {
+    return res.status(200).json({msg: "Ok"})
 }

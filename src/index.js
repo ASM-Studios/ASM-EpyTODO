@@ -23,7 +23,9 @@ app.get('/get', (req, res) => {
 
 app.use('/', authRouter)
 
-app.use("*", (req, res) => res.status(404).json({ msg: 'Not Found' }));
+app.use("*", (req, res) => {
+    res.status(404).json({msg: 'Not Found'})
+});
 
 app.listen(port, () => {
     console.log(`App listening on http://localhost:${port}`)
