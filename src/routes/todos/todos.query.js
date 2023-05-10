@@ -37,7 +37,7 @@ exports.createTodo = (res, title, description, due_time, user_id, status) => {
                 console.error(error);
                 return res.status(500).json({ msg: "Internal server error" })
             }
-            return res.status(201).json({ id: result.insertId, title, description, due_time, user_id })
+            return res.status(200).json({ id: result.insertId, title, description, due_time, user_id })
         }
     )
 }
