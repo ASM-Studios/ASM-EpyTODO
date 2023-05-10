@@ -1,11 +1,11 @@
 const express = require('express')
 const bcrypt = require('bcryptjs')
-const router = express.Router()
-const mailRegex = require('../../config/regex')
+const authRouter = express.Router()
+const { mailRegex } = require('../../config/regex')
 
 const { register, login } = require('./auth.query')
 
-router.post('/register', (req, res) => {
+authRouter.post('/register', (req, res) => {
     let email = req.body.email
     let password = req.body.password
     let name = req.body.name
@@ -16,7 +16,7 @@ router.post('/register', (req, res) => {
     register(res, email, password, name, firstname)
 });
 
-router.post('/login', (req, res) => {
+authRouter.post('/login', (req, res) => {
     let email = req.body.email
     let password = req.body.password
     if (!email || !password)
@@ -24,4 +24,4 @@ router.post('/login', (req, res) => {
     login(res, email, password)
 })
 
-module.exports = router;
+module.exports = { authRouter }

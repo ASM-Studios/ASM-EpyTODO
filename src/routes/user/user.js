@@ -2,9 +2,11 @@ const express = require('express')
 const dotenv = require('dotenv').config()
 
 const userRouter = express.Router()
+const { userInfoById } = require('./user.query')
 
 userRouter.get('/', (req, res) => {
-    return res.status(200).json({ msg: "Show user info"})
+    const id = req.userId.id
+    userInfoById(res, id)
 })
 
 module.exports = { userRouter }
