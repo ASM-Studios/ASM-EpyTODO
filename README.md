@@ -10,6 +10,10 @@ Here is the recommended repository's structure used for this project (without bo
 
 ![Repository's Structure](./assets/structure.png)
 
+This project include the following routes:
+
+![Routes](./assets/routes.png)
+
 ## Install and Run the project
 ### Requirements
 > - [NodeJS](https://nodejs.org/en/download/package-manager/)
