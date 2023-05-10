@@ -1,7 +1,9 @@
 const db = require('../../config/db')
 
 exports.userInfoById = (res, userId) => {
-    db.query('SELECT * FROM `user` WHERE `id` = ?', [userId], function (error, result) {
+    db.query('SELECT * FROM `user` WHERE `id` = ?',
+        [userId],
+        function (error, result) {
         if (error || result.length > 1)
             return res.status(500).json({ msg: "Internal server error" })
         if (result.length === 0)
@@ -18,7 +20,9 @@ exports.userInfoById = (res, userId) => {
 }
 
 exports.userInfoByIdOrEmail = (res, idOrEmail) => {
-    db.query('SELECT * FROM `user` WHERE `id` = ? OR `email` = ?', [idOrEmail, idOrEmail], function (error, result) {
+    db.query('SELECT * FROM `user` WHERE `id` = ? OR `email` = ?',
+        [idOrEmail, idOrEmail],
+        function (error, result) {
         if (error || result.length > 1)
             return res.status(500).json({ msg: "Internal server error" })
         if (result.length === 0)
@@ -35,7 +39,9 @@ exports.userInfoByIdOrEmail = (res, idOrEmail) => {
 }
 
 exports.userTodoById = (res, userId) => {
-    db.query('SELECT todo.* FROM todo INNER JOIN user ON todo.user_id = user.id WHERE user.id = ?', [userId], function (error, result) {
+    db.query('SELECT todo.* FROM todo INNER JOIN user ON todo.user_id = user.id WHERE user.id = ?',
+        [userId],
+        function (error, result) {
         if (error)
             return res.status(500).json({ msg: "Internal server error" })
         return res.status(200).json(result)
@@ -43,11 +49,15 @@ exports.userTodoById = (res, userId) => {
 }
 
 exports.updateUserById = (res, userID, email, password, name, firstname) => {
-    db.query('UPDATE user SET email = ?, firstname = ?, name = ?, password = ? WHERE id = ?', [email, firstname, name, password, userID], function (error, result) {
+    db.query('UPDATE user SET email = ?, firstname = ?, name = ?, password = ? WHERE id = ?',
+        [email, firstname, name, password, userID],
+        function (error, result) {
         if (error)
             return res.status(500).json({ msg: "Internal server error" })
     })
-    db.query('SELECT * FROM `user` WHERE `id` = ?', [userID], function (getError, getResult) {
+    db.query('SELECT * FROM `user` WHERE `id` = ?',
+        [userID],
+        function (getError, getResult) {
         if (getError || getResult.length > 1)
             return res.status(500).json({ msg: "Internal server error" })
         if (getResult.length === 0)
@@ -64,7 +74,9 @@ exports.updateUserById = (res, userID, email, password, name, firstname) => {
 }
 
 exports.deleteUserById = (res, userID) => {
-    db.query('DELETE FROM `user` WHERE `id` = ?', [userID], function (error, result) {
+    db.query('DELETE FROM `user` WHERE `id` = ?',
+        [userID],
+        function (error, result) {
         if (error)
             return res.status(500).json({ msg: "Internal server error" })
         if (result.affectedRows > 0) {

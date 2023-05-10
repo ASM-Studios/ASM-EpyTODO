@@ -7,7 +7,7 @@ const { userInfoById,
     userTodoById,
     updateUserById,
     deleteUserById } = require('./user.query')
-const {mailRegex} = require("../../config/regex");
+const { mailRegex} = require("../../config/regex")
 
 userRouter.get('/', (req, res) => {
     userInfoById(res, req.userId.id)
