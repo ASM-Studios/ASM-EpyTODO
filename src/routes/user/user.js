@@ -3,7 +3,11 @@ const dotenv = require('dotenv').config()
 
 const userRouter = express.Router()
 const usersRouter = express.Router()
-const { userInfoById, userInfoByIdOrEmail, userTodoById, updateUserById} = require('./user.query')
+const { userInfoById,
+    userInfoByIdOrEmail,
+    userTodoById,
+    updateUserById,
+    deleteUserById } = require('./user.query')
 const {mailRegex} = require("../../config/regex");
 
 userRouter.get('/', (req, res) => {
@@ -30,7 +34,7 @@ usersRouter.put('/:id', (req, res) => {
 })
 
 usersRouter.delete('/:id', (req, res) => {
-    return null
+    deleteUserById(res, req.params.id)
 })
 
 module.exports = { userRouter, usersRouter }
