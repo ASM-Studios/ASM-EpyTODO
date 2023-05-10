@@ -1,5 +1,4 @@
 const express = require('express')
-const dotenv = require('dotenv').config()
 
 const userRouter = express.Router()
 const usersRouter = express.Router()
