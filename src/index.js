@@ -5,7 +5,7 @@ const port = process.env.PORT
 const db = require('./config/db')
 
 const auth = require('./middleware/auth')
-const authRouter = require('./routes/auth/auth')
+const { authRouter } = require('./routes/auth/auth')
 const { userRouter } = require('./routes/user/user')
 
 app.use(express.urlencoded({ extended: true }))
