@@ -3,9 +3,10 @@ require('dotenv').config()
 
 function auth(req, res, next) {
     try {
-        let token = req.headers.authorization.split(" ")[1]
+        let token = req.headers.authorization
         if (!token)
             return res.status(401).json({msg: "No token provided" })
+        token = token.split(" ")[1]
         jwt.verify(token, process.env.TOKEN_SECRET, (err, id) => {
             if (err)
                 return res.status(403).json({msg: "Invalid token" })

@@ -5,8 +5,8 @@ exports.test = (name) => {
     console.log(`Your name is ${name}`)
 }
 
-exports.userInfoById = (res, id) => {
-    db.query('SELECT * FROM `user` WHERE `id` = ?', id, function (error, result) {
+exports.userInfoById = (res, userId) => {
+    db.query('SELECT * FROM `user` WHERE `id` = ?', [userId], function (error, result) {
         if (error || result.length !== 1)
             return res.status(500).json({ msg: "Internal server error" })
         return res.status(200).json({
@@ -17,5 +17,13 @@ exports.userInfoById = (res, id) => {
             firstname : result[0].firstname,
             name : result[0].name
         })
+    })
+}
+
+exports.userTodoById = (res, userId) => {
+    db.query('SELECT todo.* FROM todo INNER JOIN user ON todo.user_id = user.id WHERE user.id = ?', [userId], function (error, result) {
+        if (error)
+            return res.status(500).json({ msg: "Internal server error" })
+        return res.status(200).json(result)
     })
 }
