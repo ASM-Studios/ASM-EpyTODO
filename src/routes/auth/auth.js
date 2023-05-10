@@ -12,7 +12,7 @@ authRouter.post('/register', (req, res) => {
     let firstname = req.body.firstname
 
     if (!email || !password || !name || !firstname || !mailRegex.test(email))
-        return res.status(400).json({ msg: 'Bad parameter' })
+        return res.status(400).json({ msg: "Bad parameter" })
     register(res, email, password, name, firstname)
 });
 

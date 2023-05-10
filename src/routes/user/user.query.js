@@ -42,3 +42,11 @@ exports.userTodoById = (res, userId) => {
         return res.status(200).json(result)
     })
 }
+
+exports.updateUserById = (res, id, email, password, name, firstname) => {
+    db.query('UPDATE user SET email = ?, firstname = ?, name = ?, password = ? WHERE id = ?', [email, firstname, name, password, id], function (error, result) {
+        if (error)
+            return res.status(500).json({ msg: "Internal server error" })
+        return res.status(200).send()
+    })
+}
