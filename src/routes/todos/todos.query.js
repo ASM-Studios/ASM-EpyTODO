@@ -37,9 +37,23 @@ exports.createTodo = (res, title, description, due_time, user_id, status) => {
                 console.error(error);
                 return res.status(500).json({ msg: "Internal server error" })
             }
-            return res.status(200).json({ id: result.insertId, title, description, due_time, user_id })
-        }
-    )
+            db.query('SELECT * FROM `todo` where `id` = ?',
+                [result.insertId],
+                function (error, result) {
+                    if (error || result.length > 1)
+                        return res.status(500).json({ msg: "Internal server error" })
+                    if (result.length === 0)
+                        return res.status(404).json({ msg: `Todo with id ${result.insertId} doesn't exist` })
+                    res.status(200).json({
+                        id: result[0].id,
+                        title: result[0].title,
+                        description: result[0].description,
+                        created_at: result[0].created_at,
+                        due_time: result[0].due_time,
+                        user_id: result[0].user_id,
+                        status: result[0].status })
+            })
+    })
 }
 
 exports.updateTodoById = (res, id, title, description, due_time, user_id, status) => {
@@ -64,7 +78,7 @@ exports.updateTodoById = (res, id, title, description, due_time, user_id, status
                 due_time: result[0].due_time,
                 user_id: result[0].user_id,
                 status: result[0].status })
-        })
+    })
 }
 
 exports.deleteTodoById = (res, todoId) => {
@@ -78,5 +92,5 @@ exports.deleteTodoById = (res, todoId) => {
             } else {
                 return res.status(404).json({ msg: `User with id '${todoId}' not found` });
             }
-        })
+    })
 }

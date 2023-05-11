@@ -5,8 +5,9 @@ require('dotenv').config()
 
 exports.register = (res, email, password, name, firstname) => {
     crypt.hash(password, 12).then(hash => {
-        const userPayload = [ email, hash, name, firstname ]
-        db.query('INSERT INTO `user` (email, password, name, firstname) VALUES (?, ?, ?, ?)', userPayload, function (err, result) {
+        db.query('INSERT INTO `user` (email, password, name, firstname) VALUES (?, ?, ?, ?)',
+            [ email, hash, name, firstname ],
+            function (err, result) {
             if (err) {
                 if (err.code === 'ER_DUP_ENTRY')
                     return res.status(400).json({ msg: "Account already exists" })
@@ -21,7 +22,9 @@ exports.register = (res, email, password, name, firstname) => {
 }
 
 exports.login = (res, email, password) => {
-    db.query('SELECT * FROM `user` WHERE `email` = ?', [email], function (err, results) {
+    db.query('SELECT * FROM `user` WHERE `email` = ?',
+        [email],
+        function (err, results) {
         if (err || results.length !== 1) {
             return res.status(500).json({ msg: "Internal server error" })
         }
