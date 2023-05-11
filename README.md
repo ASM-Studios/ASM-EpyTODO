@@ -1,7 +1,7 @@
 # EpyTODO
 ### An ASM Studios production
 
-=======
+---
 
 ## Description
 EpyTODO project aim to the creation of an API interacting with a database.
@@ -60,6 +60,22 @@ Enjoy !
 > Inside the utils/ folder you will find
 > - '.env.example' An example of the .env file
 > - 'epytodoReset.sql' An sql script to reset the database
+
+---
+
+## Front-End
+
+You will find a front end for this project on the repository [ASM-EpyTODO-Front](https://github.com/ASM-Studios/ASM-EpyTODO-Front)
+
+---
+
+## Tests
+
+You can either use cli/postman or the front end to try and use this api
+
+A postman collection is already accessible [here](https://www.postman.com/maelrabot/workspace/asm-epytodo/collection/6418370-49d3603a-44ba-4a47-a3ba-09827b2df02e?action=share&creator=6418370) or you can fork it with:
+
+[![Run in Postman](https://run.pstmn.io/button.svg)](https://god.gw.postman.com/run-collection/6418370-49d3603a-44ba-4a47-a3ba-09827b2df02e?action=collection%2Ffork&collection-url=entityId%3D6418370-49d3603a-44ba-4a47-a3ba-09827b2df02e%26entityType%3Dcollection%26workspaceId%3D2e7f2dfb-33c0-407b-99f9-507710ad6557)
 
 ---
 ### REPORTING BUGS:
