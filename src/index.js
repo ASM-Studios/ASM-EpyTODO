@@ -13,22 +13,22 @@ app.use(express.urlencoded({ extended: true }))
 app.use(express.json())
 
 //Use to interact with the front-end
+app.options('*', (req, res) => {
+    res.setHeader('Access-Control-Allow-Origin', '*')
+    res.setHeader('Access-Control-Allow-Methods', 'GET, POST, PUT, DELETE')
+    res.setHeader('Access-Control-Allow-Headers', 'Origin, X-Requested-With, Content, Accept, Content-Type, Authorization')
+    res.send()
+})
+
 app.use((req, res, next) => {
     res.setHeader('Access-Control-Allow-Origin', '*')
     res.setHeader('Access-Control-Allow-Methods', 'GET, POST, PUT, DELETE')
-    res.setHeader('Access-Control-Allow-Headers', 'Content-Type, Authorization')
+    res.setHeader('Access-Control-Allow-Headers', 'Origin, X-Requested-With, Content, Accept, Content-Type, Authorization')
     next()
 })
 
 app.get('/', (req, res) => {
     res.send('Hello World!')
-})
-
-//Route for test purpose only, remove before release
-app.get('/get', (req, res) => {
-    db.query('SELECT * FROM `user`', function (err, result) {
-        res.send(result)
-    })
 })
 
 app.use('/', authRouter)
