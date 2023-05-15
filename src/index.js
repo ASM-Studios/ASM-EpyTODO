@@ -2,7 +2,6 @@ const express = require('express')
 require('dotenv').config()
 const app = express()
 const port = process.env.PORT
-const db = require('./config/db')
 
 const auth = require('./middleware/auth')
 const { authRouter } = require('./routes/auth/auth')
@@ -12,7 +11,6 @@ const { todoRouter } = require('./routes/todos/todos')
 app.use(express.urlencoded({ extended: true }))
 app.use(express.json())
 
-//Use to interact with the front-end
 app.options('*', (req, res) => {
     res.setHeader('Access-Control-Allow-Origin', '*')
     res.setHeader('Access-Control-Allow-Methods', 'GET, POST, PUT, DELETE')
