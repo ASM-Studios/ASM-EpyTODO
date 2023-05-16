@@ -4,8 +4,7 @@
   "description": "Build an API to create a TODO app",
   "main": "index.js",
   "scripts": {
-    "start": "nodemon src/index.js",
-    "safe_start": "node src/index.js",
+    "start": "node src/index.js",
     "build": "npm install; node src/index.js"
   },
   "repository": {
@@ -28,7 +27,6 @@
     "dotenv": "^16.0.3",
     "express": "^4.18.2",
     "jsonwebtoken": "^9.0.0",
-    "mysql2": "^3.2.4",
-    "nodemon": "^2.0.22"
+    "mysql2": "^3.2.4"
   }
 }
